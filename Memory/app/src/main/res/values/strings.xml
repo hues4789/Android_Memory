@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Memory</string>
+
+    <string-array name="task_list">
+        <item>数学35p</item>
+        <item>化学125p-136p</item>
+        <item>社会100p-102p</item>
+    </string-array>
+    <string name= "term_1day">1day</string>
+    <string name= "term_3day">3day</string>
+    <string name= "term_7day">7day</string>
+    <string name= "term_1month">1month</string>
+</resources>
