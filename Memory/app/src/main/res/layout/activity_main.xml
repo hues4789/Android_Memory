@@ -5,142 +5,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
         <LinearLayout
-            android:id="@+id/LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent">
-            <!--1日前-->
-            <TextView
-                android:id="@+id/term1day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="@string/term_1day"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="40dp" />
+            android:layout_weight= "0.8">
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="660dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="25dp">
 
-            <ListView
-                android:id="@+id/onedaylist"
-                android:layout_width="351dp"
-                android:layout_height="178dp"
-                android:divider="@null"
-                android:entries="@array/task_list"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term1day"
-                app:layout_constraintTop_toBottomOf="@+id/term1day" />
+                <LinearLayout
+                    android:id="@+id/LinearLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                    <!--1日前-->
+                    <TextView
+                        android:id="@+id/term1day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/term_1day"
+                        android:textSize="24sp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="40dp" />
 
-            <View
-                android:id="@+id/dateBorder3"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@color/borderGray"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/onedaylist"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term3day"
-                app:layout_constraintTop_toBottomOf="@+id/term3day" />
-            <!--３日前-->
-            <TextView
-                android:id="@+id/term3day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="@string/term_3day"
-                android:textSize="24sp"
-                app:layout_constraintTop_toBottomOf="@+id/onedaylist"
-                tools:layout_editor_absoluteX="16dp" />
+                    <ListView
+                        android:id="@+id/onedaylist"
+                        android:layout_width="351dp"
+                        android:layout_height="178dp"
+                        android:divider="@null"
+                        android:entries="@array/task_list"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term1day"
+                        app:layout_constraintTop_toBottomOf="@+id/term1day" />
 
-            <ListView
-                android:id="@+id/threedayList"
-                android:layout_width="351dp"
-                android:layout_height="178dp"
-                android:divider="@null"
-                android:entries="@array/task_list"
-                app:layout_constraintEnd_toEndOf="@+id/onedaylist"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term3day"
-                app:layout_constraintTop_toBottomOf="@+id/term3day" />
+                    <View
+                        android:id="@+id/dateBorder3"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/borderGray"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="@+id/onedaylist"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term3day"
+                        app:layout_constraintTop_toBottomOf="@+id/term3day" />
+                    <!--３日前-->
+                    <TextView
+                        android:id="@+id/term3day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/term_3day"
+                        android:textSize="24sp"
+                        app:layout_constraintTop_toBottomOf="@+id/onedaylist"
+                        tools:layout_editor_absoluteX="16dp" />
 
-            <View
-                android:id="@+id/dateBorder1"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@color/borderGray"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/onedaylist"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term1day"
-                app:layout_constraintTop_toTopOf="@+id/onedaylist" />
-            <!--７日前-->
-            <TextView
-                android:id="@+id/term7day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="@string/term_7day"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/threedayList"
-                app:layout_constraintTop_toBottomOf="@+id/threedayList" />
-            <ListView
-                android:id="@+id/sevendayList"
-                android:layout_width="351dp"
-                android:layout_height="178dp"
-                android:divider="@null"
-                android:entries="@array/task_list"
-                app:layout_constraintEnd_toEndOf="@+id/threedayList"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term7day"
-                app:layout_constraintTop_toBottomOf="@+id/term7day" />
-            <View
-                android:id="@+id/dateBorder7"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@color/borderGray"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/onedaylist"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term7day"
-                app:layout_constraintTop_toBottomOf="@+id/term7day" />
-        <!--１ヶ月前-->
-            <TextView
-                android:id="@+id/term1month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="@string/term_1month"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/sevendayList"
-                app:layout_constraintTop_toBottomOf="@+id/sevendayList" />
+                    <ListView
+                        android:id="@+id/threedayList"
+                        android:layout_width="351dp"
+                        android:layout_height="178dp"
+                        android:divider="@null"
+                        android:entries="@array/task_list"
+                        app:layout_constraintEnd_toEndOf="@+id/onedaylist"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term3day"
+                        app:layout_constraintTop_toBottomOf="@+id/term3day" />
 
-            <ListView
-                android:id="@+id/oneMonthList"
-                android:layout_width="351dp"
-                android:layout_height="178dp"
-                android:divider="@null"
-                android:entries="@array/task_list"
-                app:layout_constraintEnd_toEndOf="@+id/sevendayList"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term1month"
-                app:layout_constraintTop_toBottomOf="@+id/term1month" />
-            <View
-                android:id="@+id/dateBorder1month"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@color/borderGray"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/onedaylist"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/term1month"
-                app:layout_constraintTop_toBottomOf="@+id/term1month" />
+                    <View
+                        android:id="@+id/dateBorder1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/borderGray"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="@+id/onedaylist"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term1day"
+                        app:layout_constraintTop_toTopOf="@+id/onedaylist" />
+                    <!--７日前-->
+                    <TextView
+                        android:id="@+id/term7day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/term_7day"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="@+id/threedayList"
+                        app:layout_constraintTop_toBottomOf="@+id/threedayList" />
+
+                    <ListView
+                        android:id="@+id/sevendayList"
+                        android:layout_width="351dp"
+                        android:layout_height="178dp"
+                        android:divider="@null"
+                        android:entries="@array/task_list"
+                        app:layout_constraintEnd_toEndOf="@+id/threedayList"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term7day"
+                        app:layout_constraintTop_toBottomOf="@+id/term7day" />
+
+                    <View
+                        android:id="@+id/dateBorder7"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/borderGray"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="@+id/onedaylist"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term7day"
+                        app:layout_constraintTop_toBottomOf="@+id/term7day" />
+                    <!--１ヶ月前-->
+                    <TextView
+                        android:id="@+id/term1month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/term_1month"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="@+id/sevendayList"
+                        app:layout_constraintTop_toBottomOf="@+id/sevendayList" />
+
+                    <ListView
+                        android:id="@+id/oneMonthList"
+                        android:layout_width="351dp"
+                        android:layout_height="178dp"
+                        android:divider="@null"
+                        android:entries="@array/task_list"
+                        app:layout_constraintEnd_toEndOf="@+id/sevendayList"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term1month"
+                        app:layout_constraintTop_toBottomOf="@+id/term1month">
+
+
+                    </ListView>
+
+                    <View
+                        android:id="@+id/dateBorder1month"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/borderGray"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="@+id/onedaylist"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/term1month"
+                        app:layout_constraintTop_toBottomOf="@+id/term1month" />
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/Btm_position"
+            android:layout_width="399dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            android:gravity="center"
+            android:layout_weight= "0.2"
+            >
 
-    </ScrollView>
+            <Button
+                android:id="@+id/btToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btRandom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/random"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
