@@ -13,4 +13,7 @@
     <string name="today">Today</string>
     <string name="create">登録</string>
     <string name="random">ランダム</string>
+    <string name="random_name">数字ランダム表示</string>
+    <string name="random_start">Start</string>
+    <string name="random_create_btn">設定</string>
 </resources>

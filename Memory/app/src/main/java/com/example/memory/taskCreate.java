@@ -21,13 +21,36 @@ public class taskCreate extends AppCompatActivity implements View.OnClickListene
 
         Button TodayTask = findViewById(R.id.btToday);
 
+        Button RandomNum = findViewById(R.id.btRandom);
+
         TodayTask.setOnClickListener(this);
+
+        RandomNum.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
+
+        if(v !=null){
+            switch(v.getId()){
+                case R.id.btRandom:
+                    Intent RandomIntent = new Intent(this,RandomActivity.class);
+                    startActivity(RandomIntent);
+                    break;
+
+                case R.id.btCreate:
+                    Intent MainIntent = new Intent(this,MainActivity.class);
+                    startActivity(MainIntent);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
     }
 
     public void onCreateButtonClick(View view){

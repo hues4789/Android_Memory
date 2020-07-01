@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button CreateTask = findViewById(R.id.btCreate);
 
+        Button RandomNum = findViewById(R.id.btRandom);
+
         ListView TodayTaskList = findViewById(R.id.onedaylist);
 
         DatabaseHelper helper = new DatabaseHelper(this);
@@ -59,12 +61,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TodayTaskList.setAdapter(adapter);
 
         CreateTask.setOnClickListener(this);
+
+        RandomNum.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
-        Intent intent = new Intent(this,taskCreate.class);
-        startActivity(intent);
+        if(v !=null){
+           switch(v.getId()){
+               case R.id.btRandom:
+                   Intent RandomIntent = new Intent(this,RandomActivity.class);
+                   startActivity(RandomIntent);
+                   break;
+
+               case R.id.btCreate:
+                   Intent TaskIntent = new Intent(this,taskCreate.class);
+                   startActivity(TaskIntent);
+                   break;
+
+               default:
+                   break;
+           }
+        }
+
     }
 
 
