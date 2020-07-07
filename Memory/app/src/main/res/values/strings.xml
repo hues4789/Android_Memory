@@ -15,5 +15,13 @@
     <string name="random">ランダム</string>
     <string name="random_name">数字ランダム表示</string>
     <string name="random_start">Start</string>
+    <string name="taskCreate">Create</string>
+    <string name="taskCreated">登録しました。</string>
+    <string name="randomCreate">Random</string>
+    <string name="randomCreated">設定しました。</string>
+    <string name="OK">OK</string>
     <string name="random_create_btn">設定</string>
+    <string name="big_small_check">大小が正しくありません。</string>
+    <string name="history">登録履歴</string>
+    <string name="histories">履歴</string>
 </resources>

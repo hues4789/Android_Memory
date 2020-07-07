@@ -23,6 +23,70 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:id="@+id/FromNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:textSize="70dp"
+                    android:height="40dp"
+                    android:inputType="number"
+                    android:digits="0123456789"
+                    android:maxLength="3"
+                />
+                <TextView
+                    android:id="@+id/ToFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="〜"
+                    android:layout_weight="0.1"
+                    android:layout_gravity="center"
+                    android:paddingLeft="40dp"
+                    android:textSize="40dp"
+                    />
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:id="@+id/ToNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:textSize="70dp"
+                    android:height="40dp"
+                    android:inputType="number"
+                    android:digits="0123456789"
+                    android:maxLength="3"
+                    />
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/btRandomFromTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="@string/random_create_btn"
+                    android:layout_weight="0.1"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="CreateRandomNumButtonClick"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RandomNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="200dp"
+                android:paddingBottom="0dp"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp"
                 >
                 <TextView
                     android:id="@+id/SetFromNum"
@@ -33,7 +97,7 @@
                 <TextView
                     android:id="@+id/SetToFrom"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="〜"
                     android:layout_weight="0.1"
                     android:layout_gravity="center"
@@ -44,62 +108,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <Button
+                <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/btRandomStart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
                     android:text="@string/random_start"
                     android:layout_weight="0.1"
-                    android:onClick="onStartButtonClick"/>
-                <TextView
-                    android:id="@+id/RandomNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_weight="0.9"/>
+                    android:onClick="onStartButtonClick"
+                    app:bootstrapBrand="info" />
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <EditText
-                    android:id="@+id/FromNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    />
-                <TextView
-                    android:id="@+id/ToFrom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="〜"
-                    android:layout_weight="0.1"
-                    android:layout_gravity="center"
-                    />
-                <EditText
-                    android:id="@+id/ToNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    />
-                <Button
-                    android:id="@+id/btRandomFromTo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/random_create_btn"
-                    android:layout_weight="0.9"
-                    android:onClick="CreateRandomNumButtonClick"/>
 
-            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/Btm_position"
@@ -107,27 +137,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_weight="0.2"
             >
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btToday"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:text="@string/today"
                 android:layout_weight="1"/>
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btCreate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:text="@string/create"
                 android:layout_weight="1"/>
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btRandom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:text="@string/random"
                 android:layout_weight="1"
                 />

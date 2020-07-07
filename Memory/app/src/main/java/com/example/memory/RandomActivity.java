@@ -2,15 +2,21 @@ package com.example.memory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +29,9 @@ public class RandomActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
 
-        Button CreateTask = findViewById(R.id.btCreate);
+        BootstrapButton CreateTask = findViewById(R.id.btCreate);
 
-        Button TodayTask = findViewById(R.id.btToday);
+        BootstrapButton TodayTask = findViewById(R.id.btToday);
 
         CreateTask.setOnClickListener(this);
 
@@ -106,7 +112,7 @@ public class RandomActivity extends AppCompatActivity implements View.OnClickLis
 
         //ランダムの数を作成
         Random random = new Random();
-        int RandomNum = random.nextInt(ToNum) + fromNum;
+        int RandomNum = random.nextInt(ToNum - fromNum) + (fromNum);
 
         //ランダム数を出力
         TextView RandomText = findViewById(R.id.RandomNum);
@@ -116,12 +122,19 @@ public class RandomActivity extends AppCompatActivity implements View.OnClickLis
 
     public void CreateRandomNumButtonClick(View view){
         //入力文字を取得
-        EditText fromNum = findViewById(R.id.FromNum);
-        EditText toNum = findViewById(R.id.ToNum);
+        BootstrapEditText fromNum = findViewById(R.id.FromNum);
+        BootstrapEditText toNum = findViewById(R.id.ToNum);
 
         //数値取得
         int fromIntNum = Integer.parseInt(fromNum.getText().toString());
         int toIntNum = Integer.parseInt(toNum.getText().toString());
+        //前処理
+        //大小チェック
+        if(fromIntNum > toIntNum){
+            fromNum.setError(getString(R.string.big_small_check));
+            toNum.setError(getString(R.string.big_small_check));
+            return;
+        }
 
         //データベースヘルパーを取得
         DatabaseHelper helper = new DatabaseHelper(this);
@@ -130,6 +143,7 @@ public class RandomActivity extends AppCompatActivity implements View.OnClickLis
         SQLiteDatabase db = helper.getWritableDatabase();
 
         try{
+
             String sqlInsert = "INSERT INTO Random(from_num,to_num)VALUES (?,?)";
             SQLiteStatement stmt = db.compileStatement(sqlInsert);
 
@@ -138,16 +152,33 @@ public class RandomActivity extends AppCompatActivity implements View.OnClickLis
 
             stmt.executeInsert();
 
-        }finally {
-            db.close();
-        }
+            //登録成功表示
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.randomCreate))
+                    .setMessage(getString(R.string.randomCreated))
+                    .setPositiveButton(getString(R.string.OK), null)
+                    .create().show();
 
-        TextView SetFromNum = findViewById(R.id.SetFromNum);
-        TextView SetToNum = findViewById(R.id.SetToNum);
+            TextView SetFromNum = findViewById(R.id.SetFromNum);
+            TextView SetToNum = findViewById(R.id.SetToNum);
 
             //値をセット
             SetFromNum.setText(fromNum.getText().toString());
             SetToNum.setText(toNum.getText().toString());
+
+            //設定に成功した場合、入力textを空に
+            fromNum.setText("");
+            toNum.setText("");
+
+            //キーボード非表示
+            InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+        }finally {
+            db.close();
+        }
+
+
 
     }
 }

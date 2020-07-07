@@ -6,11 +6,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +27,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button CreateTask = findViewById(R.id.btCreate);
+        //遷移ボタン
+        BootstrapButton CreateTask = findViewById(R.id.btCreate);
 
-        Button RandomNum = findViewById(R.id.btRandom);
+        BootstrapButton RandomNum = findViewById(R.id.btRandom);
 
+        //表示リスト
         ListView TodayTaskList = findViewById(R.id.onedaylist);
 
         DatabaseHelper helper = new DatabaseHelper(this);
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<String> tasks = new ArrayList<>();
         try{
 
-            String sql = "SELECT * FROM task";
+            String sql = "SELECT * FROM task WHERE Date(created_at) IN (date('now', '-1 days'),date('now', '-3 days'),date('now', '-7 days'),date('now', '-1 months'))";
 
             Cursor cursor = db.rawQuery(sql,null);
 
@@ -66,9 +73,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.history_menu_list,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public void onClick(View v){
         if(v !=null){
            switch(v.getId()){
+
                case R.id.btRandom:
                    Intent RandomIntent = new Intent(this,RandomActivity.class);
                    startActivity(RandomIntent);
@@ -84,6 +99,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            }
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int ItemId = item.getItemId();
+        switch(ItemId){
+            case R.id.history_menu:
+                Intent HistoryIntent = new Intent(this,HistorysActivity.class);
+                startActivity(HistoryIntent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
