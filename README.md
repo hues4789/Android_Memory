@@ -9,4 +9,4 @@ Android_Memory is studying application using forgetting curve of memory.
 
 ・Output numbers randomly function(This function help you When you wanna learn study-text by random pages or you wanna learn vocabulary book)
 
-・Show task　history 
+・Show task history 
